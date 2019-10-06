@@ -5,7 +5,7 @@ Blockchain (Smart Contract):
 Backend:
 - Node.js
 - MongoDB: Stores sensitive data from patients (email,password,name,cpf,age,gender)
-- Web3.js: Interacts with ethereum smart contract which stores patient record (address,hospital,report,exams)
 
 Frontend:
 - React.js
+- Web3.js: Interacts with ethereum smart contract which stores patient record (address,hospital,report,exams)

@@ -13,7 +13,7 @@ contract PatientRecord{
     // Patient infos
     struct Patient{
         string name;
-        string id; // cpf, social security number, etc..
+        string id; // cpf, social security number, etc.., for project purposes ID == CPF
         uint age;
         Gender gender;
         address patiendAdd; // patient address
@@ -41,6 +41,8 @@ contract PatientRecord{
     // Can only access record data if name is given by patient
     // ALTERAR!!
     modifier checkID(uint recordID, address patientAdd, string memory id){
+        bytes memory tempString = bytes(id);
+        require(tempString.length == 11, "Invalid CPF."); // For project purposes ID means CPF
         require(keccak256(abi.encode(records[recordID][patientAdd].id)) == keccak256(abi.encode(id)), "Wrong patient ID");
         _;
     }

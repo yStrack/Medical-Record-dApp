@@ -1,0 +1,11 @@
+Blockchain (Smart Contract):
+- Stores patient medical records (patientAddress, hospital, record, exams, medicines, patientInfo: height, wieght) 
+
+
+Backend:
+- Node.js
+- MongoDB: Stores sensitive data from patients (email,password,name,cpf,age,gender)
+- Web3.js: Interacts with ethereum smart contract which stores patient record (address,hospital,report,exams)
+
+Frontend:
+- React.js

@@ -14,13 +14,3 @@ mongoose.connect(
 
 app.use(express.json());
 app.use(routes);
-
-/*
-web3js = new web3(
-  new web3.providers.HttpProvider(
-    `ropsten.infura.io/v3/b6e273fcbc1c43d7a2d74779c9dde44c`
-  )
-);
-
-const PatientRecord = new web3js.eth.Contract(contractABI, contractAddress);
-*/

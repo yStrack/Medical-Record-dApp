@@ -5,10 +5,7 @@ const PatientSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  password: {
-    type: String,
-    required: true
-  },
+  password: String,
   name: {
     type: String,
     required: true
@@ -21,8 +18,7 @@ const PatientSchema = new mongoose.Schema({
   gender: {
     type: String,
     enum: ["male", "female", "other"]
-  },
-  address: String // User primary key
+  }
 });
 
 module.exports = mongoose.model("Patient", PatientSchema);

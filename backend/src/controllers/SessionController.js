@@ -3,7 +3,7 @@ const Patient = require("../models/Patient");
 module.exports = {
   async store(req, res) {
     const { email } = req.body;
-    const { password } = Math.random()
+    const password = Math.random()
       .toString(36)
       .slice(2); // password is randomly generated
     const { name } = req.body;
@@ -25,5 +25,15 @@ module.exports = {
       });
     }
     return res.json(patient);
+  },
+
+  async authenticate(req, res) {
+    const { email, password } = req.body;
+    Patient.findOne({ email, password }, (err, patient) => {
+      if (err) {
+        res.status(401).json({ message: "User not found" });
+      }
+      res.json({ token: patient._id });
+    });
   }
 };

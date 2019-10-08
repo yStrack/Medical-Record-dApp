@@ -28,12 +28,13 @@ module.exports = {
   },
 
   async authenticate(req, res) {
-    const { email, password } = req.body;
-    Patient.findOne({ email, password }, (err, patient) => {
-      if (err) {
-        res.status(401).json({ message: "User not found" });
+    const email = req.body.email;
+    const password = req.body.password;
+    Patient.find({ email: email, password: password }, (err, patient) => {
+      if (patient.length == 0) {
+        return res.status(400).json({ message: "User not found" });
       }
-      res.json({ token: patient._id });
+      return res.json({ token: patient[0]._id });
     });
   }
 };

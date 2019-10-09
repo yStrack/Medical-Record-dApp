@@ -1,6 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import "./PatientLanding.css";
 
 export default function PatientLanding(props) {

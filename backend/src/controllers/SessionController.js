@@ -28,9 +28,15 @@ module.exports = {
   },
 
   async authenticate(req, res) {
+    if (req.body.email === "" || req.body.password === "") {
+      return res.status(400).json({ message: "Empty email or password" });
+    }
     const email = req.body.email;
     const password = req.body.password;
-    Patient.find({ email: email, password: password }, (err, patient) => {
+    await Patient.find({ email: email, password: password }, (err, patient) => {
+      if (err) {
+        return res.json({ message: err });
+      }
       if (patient.length == 0) {
         return res.status(400).json({ message: "User not found" });
       }

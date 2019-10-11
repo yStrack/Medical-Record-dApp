@@ -47,3 +47,28 @@
 .login:hover {
   background-color: #1261a0;
 }
+
+.about-title {
+  height: 250px;
+  margin-top: 8%;
+  position: absolute;
+  left: 45%;
+}
+
+.about-content {
+  margin-top: 20px;
+  position: absolute;
+  left: -220%;
+}
+
+.about-content p {
+  width: max-content;
+  color: #212529;
+  font-size: 18px;
+}
+
+.end {
+  margin-top: 360px;
+  height: 50px;
+  background-color: #191919;
+}

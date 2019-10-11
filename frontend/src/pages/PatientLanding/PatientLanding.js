@@ -1,8 +1,10 @@
-import React from "react";
+import React, { createRef } from "react";
 import Header from "../../components/Header";
 import "./PatientLanding.css";
 
 export default function PatientLanding(props) {
+  const ref = createRef();
+
   const handleOnClick = () => {
     props.history.push(`/login`);
   };
@@ -10,9 +12,9 @@ export default function PatientLanding(props) {
   return (
     <div className="home">
       <div className="bg-image">
-        <Header />
+        <Header param={ref} />
         <div className="top-message">
-          <h1>Your medical records secure on the blockchain</h1>
+          <h1>Your medical records secured on the blockchain</h1>
 
           <div className="botton-message">
             <h2>The new way to store data</h2>
@@ -25,6 +27,17 @@ export default function PatientLanding(props) {
           </div>
         </div>
       </div>
+      <div className="about" ref={ref}>
+        <div className="about-title">
+          <h1>About</h1>
+          <div className="about-content">
+            <p>The website uses the power of the blockchain to store your</p>
+            <p> healthcare information in a completely decentralized way,</p>
+            <p> with only you and authorized hospital having access to them.</p>
+          </div>
+        </div>
+      </div>
+      <div className="end" />
     </div>
   );
 }

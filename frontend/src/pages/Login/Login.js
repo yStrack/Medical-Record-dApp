@@ -11,7 +11,6 @@ export default class Login extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    console.log(this.state);
     api
       .post("/login", {
         email: this.state.email,

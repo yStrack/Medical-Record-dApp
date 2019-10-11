@@ -1,6 +1,9 @@
 Blockchain (Smart Contract):
 - Stores patient medical records (patientAddress, hospital, record, exams, medicines, patientInfo: height, wieght) 
 
+- Include all kinds of medical records such as doctors prescriptions, medical history, laboratory reports, etc.
+- In this usecase, only patient and registered hospital are the authorized entities for 
+accessing the patients healthcare information and with the patients permission.
 
 Backend:
 - Node.js
@@ -9,3 +12,16 @@ Backend:
 Frontend:
 - React.js
 - Web3.js: Interacts with ethereum smart contract which stores patient record (address,hospital,report,exams)
+
+How it works:
+The patient first registers with the Hospital in person by providing personal details (name, ID, age, gender).
+Then when the patient goes to the doctor for the required treatment, the doctor can access and
+register healthcare information of the patient. The information access and register are only 
+possible if the patient gives the ID and set permission to the Hospital using the dApp.
+
+Obs: Only the registered Hospitals can register new patients.
+Obs2: Only doctors can register healthcare information about the patient.
+Obs3: The patient name, id, gender and age are not stored on the Blockchain, this means that
+theses infos are stored on a normal Data Base and only the permissioned Hospitals can access it.
+Obs4: The healthcare infos are stored on the Blockchain, only patient and registered hospitals 
+are the authorized entities for accessing the patients healthcare information and with the patients permission.

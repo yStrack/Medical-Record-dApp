@@ -1,7 +1,15 @@
 import React from "react";
 import "./Header.css";
 
-export default function Header() {
+export default function Header(props) {
+  const ref = props.param;
+  const onButtonClick = () => {
+    if (ref.current) {
+      ref.current.scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+  };
   return (
     <header>
       <a className="Home" href="/">
@@ -10,7 +18,7 @@ export default function Header() {
       <nav>
         <ul className="nav_links">
           <li>
-            <a className="About" href="#">
+            <a className="About" href="#about" onClick={onButtonClick}>
               About
             </a>
           </li>

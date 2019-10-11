@@ -1,20 +1,39 @@
 pragma solidity ^0.5.11;
+import "./Hospital.sol";
+
 pragma experimental ABIEncoderV2;
 
-contract PatientRecord{
+contract PatientRecord is Hospital{
     struct Record{
-        string hospitalName;
-        address hospitalAdd;
-        string record; // doctor observations
+        HospInfo responsibleHospital; // name, CNPJ and address
+        string doctorName; // name of the doctor
+        string description; // doctor observations
         string exams; // requested exams
-        string medicines; // medicines used by the patient
+        string medicines; // medicines
+        uint height; // patient height
+        uint weight; // patient weight
+        uint256 date; // register date
+        string bloodPressuare;
+        string allergies;
     }
+
     // records[patientID] = [record1,record2,...]
     mapping(string => Record[]) records;
     address contractOwner; // business owner
-    function setRecord(string memory patientID, string memory hospitalName, string memory record, string memory exams, string memory medicines)
+
+    constructor() public{
+        contractOwner = msg.sender;
+    }
+
+    function setRecord(string memory patientID, address hospAdd,string memory doctorName,
+    string memory description, string memory exams, string memory medicines, uint height,
+    uint weight, uint256 date, string memory bloodPreassure, string memory allergies)
     public{
-        records[patientID].push(Record(hospitalName,msg.sender,record,exams,medicines));
+        string memory hName;
+        string memory hCNPJ;
+        (hName,hCNPJ,hospAdd) = Hospital.getHospital(hospAdd);
+        HospInfo memory h = HospInfo(hName, hCNPJ, hospAdd);
+        records[patientID].push(Record(h,doctorName,description,exams,medicines, height, weight,date,bloodPreassure,allergies));
     }
     function getRecord(string memory patientID) public view returns(Record[] memory){
         Record[] memory r = new Record[](records[patientID].length);

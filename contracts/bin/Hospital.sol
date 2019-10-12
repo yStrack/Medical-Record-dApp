@@ -54,11 +54,10 @@ contract Hospital{
         hospitals.push(hospAdd);
     }
 
-    function getHospital(address hospAdd) public view isOwner(msg.sender) isRegistered(hospAdd)
-    returns (string memory _name, string memory _cnpj, address _address){
+    function getHospital(address hospAdd) public view isRegistered(hospAdd)
+    returns (string memory _name, string memory _cnpj){
         _name = registeredHosp[hospAdd].name;
         _cnpj = registeredHosp[hospAdd].cnpj;
-        _address = registeredHosp[hospAdd].hospAdd;
     }
 
     function removeHospital(address hospAdd) public isOwner(msg.sender){

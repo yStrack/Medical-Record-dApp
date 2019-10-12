@@ -1,12 +1,17 @@
 import React, { createRef } from "react";
 import Header from "../../components/Header";
+import isAuth from "../../services/auth";
 import "./PatientLanding.css";
 
 export default function PatientLanding(props) {
   const ref = createRef();
 
   const handleOnClick = () => {
-    props.history.push(`/login`);
+    if (!isAuth()) {
+      props.history.push(`/login`);
+    } else if (isAuth()) {
+      props.history.push("/dashboard");
+    }
   };
 
   return (

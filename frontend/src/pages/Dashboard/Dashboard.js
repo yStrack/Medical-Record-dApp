@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from "../../services/api";
 import Web3 from "web3";
-import details from "../../services/contracts/RecordContract";
+import details from "../../services/contracts/HospitalRecord";
 import "./Dashboard.css";
 
 export default function Dashboard() {
@@ -25,11 +25,8 @@ export default function Dashboard() {
       const response = await api.get("/dashboard", {
         headers: { user_id }
       });
-      const value = await contract.methods.getRecord(1, "15172859491").call();
-      // const results = await contract.methods
-      //   .getRecord(1, response.data.cpf)
-      //   .call();
       setInfo(response.data);
+      const value = await contract.methods.getRecord(response.data.cpf).call();
       setData(value);
     }
 
@@ -43,13 +40,13 @@ export default function Dashboard() {
       <h2>{infos.cpf}</h2>
       <h2>{infos.gender}</h2>
       <h2>{infos.age}</h2>
+      <h1 className="bc-info">Blockchain Data</h1>
       {blockData.map(records => (
         <>
-          <h1 className="bc-info">Blockchain Data</h1>
-          <h2>{records.exams}</h2>
-          <h2>{records.hospitalName}</h2>
+          <h2>{records}</h2>
+          {/* <h2>{records.hospitalName}</h2>
           <h2>{records.hospitalAdd}</h2>
-          <h2>{records.medicines}</h2>
+          <h2>{records.medicines}</h2> */}
         </>
       ))}
     </>

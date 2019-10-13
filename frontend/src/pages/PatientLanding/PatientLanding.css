@@ -38,9 +38,12 @@
 }
 
 .login {
+  border: none;
+  border-radius: 50px;
   padding: 10px 30px;
   color: white;
   font-size: 16px;
+  cursor: pointer;
   background-color: rgba(18, 97, 160, 0.9);
 }
 

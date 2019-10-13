@@ -1,8 +1,52 @@
-.db-info {
+.db-info,
+.bc-info {
   margin-bottom: 10px;
 }
+.menu-button {
+  position: absolute;
+  margin-left: 90px;
+  margin-top: 25px;
+  background: url("../../assets/menu.svg");
+  cursor: pointer;
+}
 
-.bc-info {
-  margin-top: 50px;
-  margin-bottom: 10px;
+.container {
+  max-width: 450px;
+  width: 100%;
+  position: absolute;
+  left: 32%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: left;
+  background: #fff;
+  margin-top: 30px;
+  border-radius: 5px;
+  padding: 30px;
+}
+/* 
+.pf-info {
+  left: -50px;
+} */
+
+.items {
+  /* align-items: center; */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 30px; */
+}
+
+.sideItems {
+  padding: 10px;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.85);
+  /* margin-top: 20px; */
+  color: rgba(255, 255, 255, 0.85);
+}
+
+h3 {
+  overflow: auto;
 }

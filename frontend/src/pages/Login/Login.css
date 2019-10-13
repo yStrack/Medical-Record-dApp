@@ -51,6 +51,7 @@ input[type="submit"] {
   color: white;
   font-size: 22px;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 input[type="submit"]:hover {

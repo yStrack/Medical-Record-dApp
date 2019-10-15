@@ -245,7 +245,7 @@ export default function Register(props) {
           <h3 className="show-info">
             Medication History: {record.medicationHistory}
           </h3>
-          <h3 className="show-info">Allergies: {record.medicationHistory}</h3>
+          <h3 className="show-info">Allergies: {record.allergies}</h3>
           <h3 className="show-info">Register date: {record.date}</h3>
         </div>
       )}

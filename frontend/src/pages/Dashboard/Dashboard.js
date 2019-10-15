@@ -14,6 +14,7 @@ export default function Dashboard() {
   const [blockData, setData] = useState([]);
   const [open, setOpen] = useState(false);
   const [account, setAcc] = useState("");
+  const [date, setDate] = useState("");
 
   // Connect to metamask
   let web3 = window.web3;
@@ -36,7 +37,9 @@ export default function Dashboard() {
       setInfo(response.data);
       const value = await contract.methods.getRecord(response.data.cpf).call();
       setData(value);
-
+      let d = value[4];
+      d = new Date(d * 1000);
+      setDate(d);
       web3.eth.getCoinbase(function(a, coinbase) {
         setAcc(coinbase);
       });
@@ -124,11 +127,7 @@ export default function Dashboard() {
                   </h3>
                 )}
                 {// eslint-disable-next-line
-                key == 3 && (
-                  <h3>
-                    Registry date: {Object.assign({}, blockData.slice(1))[key]}
-                  </h3>
-                )}
+                key == 3 && <h3>Registry date:{" " + String(date)}</h3>}
               </>
             ))}
           </div>

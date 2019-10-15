@@ -1,5 +1,5 @@
 import React, { createRef } from "react";
-import Header from "../../components/Header";
+import Header from "../../components/Header/Header";
 import isAuth from "../../services/auth";
 import "./PatientLanding.css";
 

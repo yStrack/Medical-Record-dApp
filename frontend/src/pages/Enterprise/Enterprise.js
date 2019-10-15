@@ -1,49 +1,61 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import Web3 from "web3";
-class Enterprise extends Component {
-  constructor() {
-    super();
+import UnlockMetamask from "../../components/UnlockMetamask/UnlockMetamask";
+import Header from "../../components/Header/Header";
+import Register from "../../components/Register/Register";
+import Box from "../../components/Box/Box";
 
-    // Network connection
-    if (window.ethereum) {
-      window.ethereum.autoRefreshOnNetworkChange = false;
+import "./Enterprise.css";
 
-      window.web3 = new Web3(window.ethereum);
-      try {
-        // Request account access if needed
-        window.ethereum.enable().then(
-          window.web3.eth.getCoinbase(function(a, coinbase) {
-            window.coinbase = coinbase;
-            console.log("window.coinbase:", window.coinbase);
-          })
-        );
-        // Acccounts now exposed
-      } catch (error) {
-        // User denied account access...
+export default function Enterprise() {
+  let web3 = window.web3;
+  const [isConnected, setConnect] = useState(false);
+  const [account, setAcc] = useState("");
+
+  useEffect(() => {
+    async function metamaskConnect() {
+      if (web3.currentProvider) {
+        web3.currentProvider.autoRefreshOnNetworkChange = false;
+        web3 = new Web3(web3.currentProvider);
+        try {
+          // Request account access if needed
+          await window.ethereum.enable();
+          web3.currentProvider.enable().then(
+            web3.eth.getCoinbase(function(a, coinbase) {
+              setAcc(coinbase);
+              setConnect(true);
+            })
+          );
+        } catch (error) {
+          console.log(error);
+          setConnect(false);
+        }
       }
-    } // Legacy dapp browsers...
-    else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider);
-      // Acccounts always exposed
-      window.web3.eth.getAccounts(acc => {
-        console.log(acc);
-      });
     }
-    // Non-dapp browsers...
-    else {
-      console.log(
-        "Non-Ethereum browser detected. You should consider trying MetaMask!"
-      );
-    }
+    metamaskConnect();
+  }, []);
+
+  if (!isConnected) {
+    return (
+      <>
+        <UnlockMetamask />
+      </>
+    );
   }
 
-  render() {
+  if (isConnected) {
     return (
-      <div className="home">
-        <h1>Hello Enterprise</h1>
+      <div className="enterprise">
+        <Header loged={false} enterprise={true} acc={account}></Header>
+        <div className="main">
+          <Box title="Register new patient" children={<Register type={1} />} />
+          <Box
+            title="Register patient record"
+            children={<Register type={2} />}
+          />
+          <Box title="New patient report" children={<Register type={3} />} />
+        </div>
       </div>
     );
   }
 }
-
-export default Enterprise;

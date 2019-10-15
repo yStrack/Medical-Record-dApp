@@ -36,7 +36,9 @@ export default class Login extends Component {
       <div className="wrapper">
         <form className="form-signin" onSubmit={this.handleSubmit}>
           <h2 className="form-signin-heading">Please login</h2>
-          {this.failLogin && <p>*Incorrect email or password</p>}
+          {this.failLogin && (
+            <p className="fail">*Incorrect email or password</p>
+          )}
           <input
             type="text"
             className="form-control"

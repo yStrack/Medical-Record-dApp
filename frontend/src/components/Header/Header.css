@@ -51,3 +51,7 @@ button {
 .logout-button:hover {
   background-color: rgba(119, 119, 119, 0.5);
 }
+
+.acc {
+  color: black;
+}

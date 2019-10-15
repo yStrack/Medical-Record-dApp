@@ -1,0 +1,37 @@
+.box {
+  font-size: 16px;
+  font-weight: 500;
+  max-width: 450px;
+  width: 100%;
+  left: 32%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+  left: 32%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: left;
+  background: #fff;
+  margin-top: 30px;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.header {
+  cursor: pointer;
+}
+
+.expend {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 20px;
+  text-align: left;
+  border-top: solid 1px #f2f2f2;
+  border-left: solid 1px #f2f2f2;
+  border-right: solid 1px #f2f2f2;
+  border-bottom: solid 1px #f2f2f2;
+  border-radius: 0 0 5px 5px;
+  padding: 15px;
+}

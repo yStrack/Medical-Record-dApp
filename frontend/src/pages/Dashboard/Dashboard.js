@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import api from "../../services/api";
 import Web3 from "web3";
 import details from "../../services/contracts/HospitalRecord";
-import Header from "../../components/Header";
+import Header from "../../components/Header/Header";
 import SideBar from "react-sidebar";
 import menu from "../../assets/menu.svg";
 
@@ -17,19 +17,18 @@ export default function Dashboard() {
 
   // Connect to metamask
   let web3 = window.web3;
-  let web3js = null;
   if (typeof web3 !== "undefined") {
     // Use Mist/MetaMask's provider
-    web3js = new Web3(web3.currentProvider);
+    web3 = new Web3(web3.currentProvider);
   } else {
     console.log("No web3? You should consider trying MetaMask!");
-    web3js = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
   }
 
   // Retrieve data from backend and blockchain
   useEffect(() => {
     async function loadPatientData() {
-      const contract = new web3js.eth.Contract(details.ABI, details.address);
+      const contract = new web3.eth.Contract(details.ABI, details.address);
       const user_id = localStorage.getItem("user");
       const response = await api.get("/dashboard", {
         headers: { user_id }
@@ -41,19 +40,10 @@ export default function Dashboard() {
       web3.eth.getCoinbase(function(a, coinbase) {
         setAcc(coinbase);
       });
-      console.log(account);
     }
     loadPatientData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // function treatInfo(info) {
-  //   console.log(info instanceof String)
-  //   if (info instanceof String) {
-  //     return info;
-  //   } else {
-  //     return "teste";
-  //   }
-  // }
 
   return (
     <>
@@ -72,9 +62,6 @@ export default function Dashboard() {
             </a>
             <a href="/dashboard/account" className="sideItems">
               Authorize Hospital
-            </a>
-            <a href="/dashboard/record" className="sideItems">
-              Medical Record
             </a>
             <a href="/dashboard/reports" className="sideItems">
               Medical Reports
@@ -96,11 +83,7 @@ export default function Dashboard() {
           }
         }}
       ></SideBar>
-      <Header
-        name={infos.name}
-        loged={true}
-        styles={{ header: { position: "absolute" } }}
-      ></Header>
+      <Header name={infos.name} loged={true}></Header>
       <div className="container">
         <div className="content">
           <div className="pf-info">
@@ -121,23 +104,27 @@ export default function Dashboard() {
             <h1 className="bc-info">Patient Record</h1>
             {Object.keys(Object.assign({}, blockData.slice(1))).map(key => (
               <>
-                {key == 0 && (
+                {// eslint-disable-next-line
+                key == 0 && (
                   <h3>
                     Treatments: {Object.assign({}, blockData.slice(1))[key]}
                   </h3>
                 )}
-                {key == 1 && (
+                {// eslint-disable-next-line
+                key == 1 && (
                   <h3>
                     Medication History:{" "}
                     {Object.assign({}, blockData.slice(1))[key]}
                   </h3>
                 )}
-                {key == 2 && (
+                {// eslint-disable-next-line
+                key == 2 && (
                   <h3>
                     Allergies: {Object.assign({}, blockData.slice(1))[key]}
                   </h3>
                 )}
-                {key == 3 && (
+                {// eslint-disable-next-line
+                key == 3 && (
                   <h3>
                     Registry date: {Object.assign({}, blockData.slice(1))[key]}
                   </h3>

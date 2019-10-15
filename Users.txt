@@ -1,0 +1,31 @@
+!!For test purposes only
+
+==========USER LIST==========
+[
+    {
+        "_id": "5d9a0e2c6acd54c32e537981",
+        "email": "ys@gmail.com",
+        "password": "1bgh51qblpy",
+        "name": "Yuri",
+        "cpf": "15172859491",
+        "age": 21,
+        "gender": "male",
+        "__v": 0
+    },
+    {
+        "_id": "5da5f5c472c48b5b12bf894a",
+        "email": "mf@email.com",
+        "password": "eiohd6pdtdf",
+        "name": "Maria Ferreira ",
+        "cpf": "12742560727",
+        "age": 26,
+        "gender": "female",
+        "__v": 0
+    },
+]
+
+==========Contract Owner==========
+0xE8f10A2d2d6dD650670Dc46e1244fb3bE2E48207
+
+==========Registered Hospitals==========
+0xE8f10A2d2d6dD650670Dc46e1244fb3bE2E48207

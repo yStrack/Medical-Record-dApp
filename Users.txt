@@ -22,7 +22,18 @@
         "gender": "female",
         "__v": 0
     },
+    {
+        "_id": "5da642ce3b87d96528607b00",
+        "email": "ap@email.com",
+        "password": "vwxt6pifxlk",
+        "name": "Alberto Pereira",
+        "cpf": "16141153795",
+        "age": 42,
+        "gender": "male",
+        "__v": 0
+    },
 ]
+
 
 ==========Contract Owner==========
 0xE8f10A2d2d6dD650670Dc46e1244fb3bE2E48207

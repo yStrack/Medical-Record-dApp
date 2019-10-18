@@ -34,6 +34,8 @@
     },
 ]
 
+==========Contract Address==========
+0x25Df05014f65eaA01E0aede994b3Ed753FEe2C01
 
 ==========Contract Owner==========
 0xE8f10A2d2d6dD650670Dc46e1244fb3bE2E48207

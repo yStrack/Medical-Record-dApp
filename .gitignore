@@ -4,3 +4,4 @@ backend/.env
 .env/
 .DS_STORE
 links.txt
+todo.txt

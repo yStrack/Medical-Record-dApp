@@ -5,3 +5,4 @@ backend/.env
 .DS_STORE
 links.txt
 todo.txt
+backup.js

@@ -88,6 +88,12 @@ contract HospitalRecord{
     }
 
     // Get hospital infos based on their PK
+    function returnHospital(address hospAdd) private view isRegistered(hospAdd)
+    returns (HospInfo memory h){
+        h = registeredHosp[hospAdd];
+    }
+
+    // Get hospital infos based on their PK
     function getHospital(address hospAdd) public view isRegistered(hospAdd)
     returns (string memory _name, string memory _cnpj){
         _name = registeredHosp[hospAdd].name;
@@ -118,10 +124,7 @@ contract HospitalRecord{
     // Creates a new record for a patient
     function setRecord(string memory patientID, string memory treatments, string memory medicationHistory, string memory allergies, uint256 date)
     public isRegistered(msg.sender){
-        string memory hName;
-        string memory hCNPJ;
-        (hName,hCNPJ) = getHospital(msg.sender);
-        HospInfo memory h = HospInfo(hName, hCNPJ, msg.sender);
+        HospInfo memory h = returnHospital(msg.sender);
         patientRecord[patientID] = Record(h,treatments,medicationHistory,allergies,date);
     }
 
@@ -137,22 +140,19 @@ contract HospitalRecord{
         emit ownerChanged(oldOwner, newOwner);
     }
 
-    // function setReport(string memory patientID, string memory doctorName,
-    // string memory description, string memory exams, string memory medicines, uint height,
-    // uint weight, uint bodyTemperature, string memory bloodPreassure, uint256 date)
-    // public isRegistered(msg.sender){
-    //     string memory hName;
-    //     string memory hCNPJ;
-    //     (hName,hCNPJ) = getHospital(msg.sender);
-    //     HospInfo memory h = HospInfo(hName, hCNPJ, msg.sender);
-    //     reports[patientID].push(Report(h,doctorName,description,exams,medicines, height, weight,bodyTemperature,bloodPreassure,date));
-    // }
+    function setReport(string memory patientID, string memory doctorName,
+    string memory description, string memory exams, string memory medicines, uint height,
+    uint weight, uint bodyTemperature, string memory bloodPreassure, uint256 date)
+    public isRegistered(msg.sender){
+        HospInfo memory h = returnHospital(msg.sender);
+        reports[patientID].push(Report(h,doctorName,description,exams,medicines, height, weight,bodyTemperature,bloodPreassure,date));
+    }
 
-    // function getReports(string memory patientID) public view isRegistered(msg.sender) returns(Report[] memory){
-    //     Report[] memory r = new Report[](reports[patientID].length);
-    //     for (uint i = 0; i < r.length; i++){
-    //         r[i] = reports[patientID][i];
-    //     }
-    //     return r;
-    // }
+    function getReports(string memory patientID) public view isRegistered(msg.sender) returns(Report[] memory){
+        Report[] memory r = new Report[](reports[patientID].length);
+        for (uint i = 0; i < r.length; i++){
+            r[i] = reports[patientID][i];
+        }
+        return r;
+    }
 }

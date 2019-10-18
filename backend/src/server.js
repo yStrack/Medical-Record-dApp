@@ -9,7 +9,7 @@ const app = express();
 
 mongoose.connect(
   `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PSW}@blockchainproject-mzfxi.mongodb.net/project?retryWrites=true&w=majority`,
-  { useNewUrlParser: true, useUnifiedTopology: true }
+  { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }
 );
 
 app.use(cors());

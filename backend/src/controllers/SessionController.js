@@ -10,6 +10,7 @@ module.exports = {
     const { cpf } = req.body;
     const { age } = req.body;
     const { gender } = req.body;
+    const authorizations = [];
 
     let patient = await Patient.findOne({ email });
 
@@ -21,7 +22,8 @@ module.exports = {
         name,
         cpf,
         age,
-        gender
+        gender,
+        authorizations
       });
     }
     return res.json(patient);

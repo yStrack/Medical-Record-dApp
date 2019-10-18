@@ -20,3 +20,8 @@
 .show-info {
   padding: 2px;
 }
+
+.notAuth {
+  color: red;
+  text-align: center;
+}

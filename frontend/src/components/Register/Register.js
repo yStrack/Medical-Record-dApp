@@ -51,7 +51,7 @@ export default function Register(props) {
           console.log({ status: "ok", message: response.data });
         })
         .catch(err => {
-          setFail(true);
+          // setFail(true);
         });
 
       setInfo({
@@ -87,19 +87,31 @@ export default function Register(props) {
         allergies: ""
       });
     } else if (type === 4) {
-      contract.methods
-        .getRecord(record.id)
-        .call()
-        .then(res => {
-          setRecord({
-            id: res.id,
-            treatments: res.treatments,
-            medicationHistory: res.medicationHistory,
-            allergies: res.allergies,
-            date: String(new Date(res.date * 1000))
+      const response = await api.get("/enterprise", {
+        headers: {
+          hospital_id: acc,
+          id: record.id,
+          "Content-Type": "application/json"
+        }
+      });
+      // console.log(response.data);
+      if (response.data.status == "OK") {
+        contract.methods
+          .getRecord(record.id)
+          .call()
+          .then(res => {
+            setRecord({
+              id: res.id,
+              treatments: res.treatments,
+              medicationHistory: res.medicationHistory,
+              allergies: res.allergies,
+              date: String(new Date(res.date * 1000))
+            });
+            setLoad(true);
           });
-          setLoad(true);
-        });
+      } else {
+        setFail(true);
+      }
     }
   };
 
@@ -247,6 +259,11 @@ export default function Register(props) {
           </h3>
           <h3 className="show-info">Allergies: {record.allergies}</h3>
           <h3 className="show-info">Register date: {record.date}</h3>
+        </div>
+      )}
+      {type == 4 && fail && (
+        <div className="infos">
+          <h3 className="notAuth">Access denied by patient</h3>
         </div>
       )}
     </form>

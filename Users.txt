@@ -35,10 +35,30 @@
 ]
 
 ==========Contract Address==========
-0x25Df05014f65eaA01E0aede994b3Ed753FEe2C01
+0x25Df05014f65eaA01E0aede994b3Ed753FEe2C01  (Old version)
+0x09bA1c4a4f8c5082DDC9323c389497892F68701b  (Live version)
 
 ==========Contract Owner==========
 0xE8f10A2d2d6dD650670Dc46e1244fb3bE2E48207
 
 ==========Registered Hospitals==========
 0xE8f10A2d2d6dD650670Dc46e1244fb3bE2E48207
+0: string: _name Owner
+1: string: _cnpj 69087819000134
+
+0x65b720573Bf56ffe1fc3F848e1dd03495901c7a4
+0: string: _name Barra Dor
+1: string: _cnpj 28918746000107
+
+================================================
+Migrando pro novo contrato:
+Alberto Pereira - CPF: 16141153795
+0: tuple(tuple(string,string,address),string,string,string,uint256): B Dor,173618736,0xE8f10A2d2d6dD650670Dc46e1244fb3bE2E48207,Diabetes,None,Penicillin,1571177248
+
+================================================
+Maria Ferreira - CPF: 12742560727
+0: tuple(tuple(string,string,address),string,string,string,uint256): B Dor,173618736,0xE8f10A2d2d6dD650670Dc46e1244fb3bE2E48207,Hypertension,Antihypertensives,Penicillin,1571160003
+
+================================================
+Yuri - CPF: 15172859491
+0: tuple(tuple(string,string,address),string,string,string,uint256): B Dor,173618736,0xE8f10A2d2d6dD650670Dc46e1244fb3bE2E48207,Diabets,Insulina,None,1571428562

@@ -129,7 +129,7 @@ contract HospitalRecord{
     }
 
     // Get the record infos
-    function getRecord(string memory patientID) public view isRegistered(msg.sender) returns(Record memory){
+    function getRecord(string memory patientID) public view returns(Record memory){
         return patientRecord[patientID];
     }
 
@@ -148,11 +148,8 @@ contract HospitalRecord{
         reports[patientID].push(Report(h,doctorName,description,exams,medicines, height, weight,bodyTemperature,bloodPreassure,date));
     }
 
-    function getReports(string memory patientID) public view isRegistered(msg.sender) returns(Report[] memory){
-        Report[] memory r = new Report[](reports[patientID].length);
-        for (uint i = 0; i < r.length; i++){
-            r[i] = reports[patientID][i];
-        }
+    function getReports(string memory patientID) public view returns(Report[] memory){
+        Report[] memory r = reports[patientID];
         return r;
     }
 }

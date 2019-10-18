@@ -2,9 +2,9 @@ const Patient = require("../models/Patient");
 
 module.exports = {
   async authorizedHospitals(req, res) {
-    const { hospital_id } = req.headers;
-    const { id } = req.body;
-
+    let { hospital_id } = req.headers;
+    const { id } = req.headers;
+    hospital_id = hospital_id.toLowerCase();
     await Patient.find({ cpf: id }, (err, patient) => {
       if (err) {
         return res.json({ message: err });

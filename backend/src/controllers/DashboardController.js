@@ -11,7 +11,8 @@ module.exports = {
 
   async addAuth(req, res) {
     const { user_id } = req.headers;
-    const { hospital } = req.body;
+    let { hospital } = req.body;
+    hospital = hospital.toLowerCase();
 
     const infos = await Patient.findById(user_id);
     const { authorizations } = infos;
@@ -36,7 +37,8 @@ module.exports = {
 
   async removeAuth(req, res) {
     const { user_id } = req.headers;
-    const { hospital } = req.body;
+    let { hospital } = req.body;
+    hospital = hospital.toLowerCase();
 
     const infos = await Patient.findById(user_id);
     const { authorizations } = infos;

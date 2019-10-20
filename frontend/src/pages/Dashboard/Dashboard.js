@@ -12,7 +12,7 @@ export default function Dashboard() {
   // States
   const [infos, setInfo] = useState({});
   const [blockData, setData] = useState([]);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [account, setAcc] = useState("");
   const [date, setDate] = useState("");
 
@@ -63,7 +63,7 @@ export default function Dashboard() {
             <a href="/dashboard" className="sideItems">
               Home
             </a>
-            <a href="/dashboard/account" className="sideItems">
+            <a href="/dashboard/auth" className="sideItems">
               Authorize Hospital
             </a>
             <a href="/dashboard/reports" className="sideItems">
@@ -73,7 +73,7 @@ export default function Dashboard() {
         }
         open={open}
         onSetOpen={setOpen}
-        // docked={open}
+        docked={open}
         styles={{
           root: { top: 72 },
           sidebar: {

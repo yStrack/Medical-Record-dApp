@@ -30,7 +30,7 @@ module.exports = {
           return res.json({ message: err });
         }
         // return res.json(patient); // for debug
-        return res.json({ status: "OK" });
+        return res.json(patient.authorizations);
       }
     );
   },
@@ -60,7 +60,7 @@ module.exports = {
           return res.json({ message: err });
         }
         // return res.json(patient); // for debug
-        return res.json({ status: "OK" });
+        return res.json(patient.authorizations);
       }
     );
   }

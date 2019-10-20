@@ -18,7 +18,7 @@ module.exports = {
           message: "Access denied by patient"
         });
       }
-      return res.json({ status: "OK" });
+      return res.json({ status: "OK", auth: patient[0].authorizations });
     });
   }
 };

@@ -32,7 +32,18 @@
         "gender": "male",
         "__v": 0
     },
+    {
+        "_id": "5dacda6a02482943a0b21954",
+        "email": "jv20@email.com",
+        "password": "wj9r2jx7ha8",
+        "name": "João Victor Malheiros",
+        "cpf": "02145167835",
+        "age": 31,
+        "gender": "male",
+        "__v": 0
+    },
 ]
+
 
 ==========Contract Address==========
 0x25Df05014f65eaA01E0aede994b3Ed753FEe2C01  (Old version)

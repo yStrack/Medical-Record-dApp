@@ -1,7 +1,7 @@
 # Secure Medical Records
 This is a project for a Blockchain class at PUC-RIO.
 
-It is my first time coding a full stack website using Node.js and React.js. There is a big room form improvement when it comes to the code and how things are done.
+It is my first time coding a full stack website using Node.js and React.js. There is a big room for improvement when it comes to the code and how things are done.
 
 # Installation and usage
 After unziping the downloaded file you should see the following:

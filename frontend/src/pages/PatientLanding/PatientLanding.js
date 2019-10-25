@@ -19,7 +19,7 @@ export default function PatientLanding(props) {
       <div className="bg-image">
         <Header param={ref} />
         <div className="top-message">
-          <h1>Your medical records secured on the blockchain</h1>
+          <h1>Healthcare information secure on the blockchain</h1>
 
           <div className="botton-message">
             <h2>The new way to store data</h2>

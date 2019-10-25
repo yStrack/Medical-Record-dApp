@@ -9102,6 +9102,11 @@ react-app-polyfill@^1.0.4:
     regenerator-runtime "0.13.3"
     whatwg-fetch "3.0.0"
 
+react-collapsing-table@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-collapsing-table/-/react-collapsing-table-1.0.0.tgz#211f33dc40641ee8f0bb496d34772b9e115f81bd"
+  integrity sha512-mv+TavfIN9WGb+WdIK5JN8++qtPTT/Dm+BEw336/wP9olRxE+ZPnjFNspcGiW6hza/K5j5M3F4YTqUt0EmdrHw==
+
 react-dev-utils@^9.1.0:
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-9.1.0.tgz#3ad2bb8848a32319d760d0a84c56c14bdaae5e81"

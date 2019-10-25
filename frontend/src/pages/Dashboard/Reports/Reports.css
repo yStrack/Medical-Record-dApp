@@ -1,0 +1,11 @@
+.report-date {
+  text-align: center;
+  margin-bottom: 10px;
+  border-bottom: 1.5px solid rgba(106, 108, 110, 0.3);
+}
+
+.report-info {
+  margin-bottom: 2px;
+  font-size: 15px;
+  overflow: auto;
+}

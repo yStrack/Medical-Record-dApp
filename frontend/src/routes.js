@@ -5,6 +5,7 @@ import Entrerprise from "./pages/Enterprise/Enterprise";
 import Login from "./pages/Login/Login";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Authorized from "./pages/Dashboard/AuthHospital/Authorized";
+import Reports from "./pages/Dashboard/Reports/Reports";
 
 export default function Routes() {
   return (
@@ -14,6 +15,7 @@ export default function Routes() {
       <Route path="/enterprise" component={Entrerprise} />
       <Route path="/dashboard" exact component={Dashboard} />
       <Route path="/dashboard/auth" exact component={Authorized} />
+      <Route path="/dashboard/reports" exact component={Reports} />
     </Switch>
   );
 }

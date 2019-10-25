@@ -77,7 +77,7 @@ export default function Enterprise() {
               />
               <Box
                 title="New patient report"
-                children={<Register type={3} text="Register" />}
+                children={<Register type={3} acc={account} text="Register" />}
               />
               <Box
                 title="View patient report"

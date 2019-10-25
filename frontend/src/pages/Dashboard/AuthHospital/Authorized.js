@@ -10,7 +10,7 @@ import menu from "../../../assets/menu.svg";
 import "./Authorized.css";
 
 export default function Authorized(props) {
-  const [open, setOpen] = useState(true); // menu state
+  const [open, setOpen] = useState(false); // menu state
   const [registeredHospitals, setRegister] = useState([]); // address of the registered hospitals
   const [options, setOptions] = useState([]); // name of the registered hospitals
   let [authorized, setAuthorized] = useState([]); // list of hospitals authorized by patient
@@ -106,7 +106,7 @@ export default function Authorized(props) {
         }
         open={open}
         onSetOpen={setOpen}
-        docked={open}
+        // docked={open}
         styles={{
           root: { top: 72 },
           sidebar: {

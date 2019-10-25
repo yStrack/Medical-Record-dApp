@@ -26,6 +26,17 @@ export default function Register(props) {
     allergies: "",
     date: ""
   });
+  const [report, setReport] = useState({
+    id: "",
+    doctorName: "",
+    description: "",
+    exams: "",
+    medicines: "",
+    height: "",
+    weight: "",
+    bodyTemperature: "",
+    bloodPreassure: ""
+  });
   const [fail, setFail] = useState(false);
   const [loaded, setLoad] = useState(false);
 
@@ -86,6 +97,35 @@ export default function Register(props) {
         medicationHistory: "",
         allergies: ""
       });
+    } else if (type === 3) {
+      let date = new Date().getTime();
+      let registerDate = Math.floor(date / 1000);
+      await contract.methods
+        .setReport(
+          report.id,
+          report.doctorName,
+          report.description,
+          report.exams,
+          report.medicines,
+          report.height,
+          report.weight,
+          report.bodyTemperature,
+          report.bloodPreassure,
+          registerDate
+        )
+        .send({ from: acc });
+
+      setReport({
+        id: "",
+        doctorName: "",
+        description: "",
+        exams: "",
+        medicines: "",
+        height: "",
+        weight: "",
+        bodyTemperature: "",
+        bloodPreassure: ""
+      });
     } else if (type === 4) {
       const response = await api.get("/enterprise", {
         headers: {
@@ -95,7 +135,7 @@ export default function Register(props) {
         }
       });
       // console.log(response.data);
-      if (response.data.status == "OK") {
+      if (response.data.status === "OK") {
         contract.methods
           .getRecord(record.id)
           .call()
@@ -123,6 +163,10 @@ export default function Register(props) {
       });
     } else if (type === 2 || type === 4) {
       setRecord(prevState => {
+        return { ...prevState, [e.target.name]: e.target.value };
+      });
+    } else if (type === 3) {
+      setReport(prevState => {
         return { ...prevState, [e.target.name]: e.target.value };
       });
     }
@@ -234,6 +278,103 @@ export default function Register(props) {
           />
         </>
       )}
+
+      {type === 3 && (
+        <>
+          <p className="title">Patient ID:</p>
+          <input
+            type="text"
+            className="form-input"
+            name="id"
+            placeholder="CPF"
+            required=""
+            autoFocus=""
+            onChange={handleChange}
+            value={report.id}
+          />
+          <p className="title">Doctor name:</p>
+          <input
+            type="text"
+            className="form-input"
+            name="doctorName"
+            placeholder="Doctor name"
+            required=""
+            onChange={handleChange}
+            value={report.doctorName}
+          />
+          <p className="title">Description:</p>
+          <input
+            type="text"
+            className="form-input"
+            name="description"
+            placeholder="Doctor description"
+            required=""
+            onChange={handleChange}
+            value={report.description}
+          />
+          <p className="title">Ordered exams:</p>
+          <input
+            type="text"
+            className="form-input"
+            name="exams"
+            placeholder="Exams"
+            required=""
+            onChange={handleChange}
+            value={report.exams}
+          />
+          <p className="title">Medication used by patient:</p>
+          <input
+            type="text"
+            className="form-input"
+            name="medicines"
+            placeholder="Medicines"
+            required=""
+            onChange={handleChange}
+            value={report.medicines}
+          />
+          <p className="title">Patient height:</p>
+          <input
+            type="text"
+            className="form-input"
+            name="height"
+            placeholder="Height"
+            required=""
+            onChange={handleChange}
+            value={report.height}
+          />
+          <p className="title">Patient weight:</p>
+          <input
+            type="text"
+            className="form-input"
+            name="weight"
+            placeholder="Weight"
+            required=""
+            onChange={handleChange}
+            value={report.weight}
+          />
+          <p className="title">Patient body temperature:</p>
+          <input
+            type="text"
+            className="form-input"
+            name="bodyTemperature"
+            placeholder="Body temperature"
+            required=""
+            onChange={handleChange}
+            value={report.bodyTemperature}
+          />
+          <p className="title">Patient blood preassure:</p>
+          <input
+            type="text"
+            className="form-input"
+            name="bloodPreassure"
+            placeholder="Blood preassure"
+            required=""
+            onChange={handleChange}
+            value={report.bloodPreassure}
+          />
+        </>
+      )}
+
       {type === 4 && (
         <>
           <p className="title">Patient ID:</p>
@@ -261,7 +402,7 @@ export default function Register(props) {
           <h3 className="show-info">Register date: {record.date}</h3>
         </div>
       )}
-      {type == 4 && fail && (
+      {type === 4 && fail && (
         <div className="infos">
           <h3 className="notAuth">Access denied by patient</h3>
         </div>

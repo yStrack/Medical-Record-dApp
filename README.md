@@ -31,7 +31,7 @@ cd ..
 
 Now the backend is running on http://localhost:3333 and frontend on http://localhost:3000
 By accessing http://localhost:3000/ you will be using the dApp as a patient sees it.
-By accessing http://localhost:3000/enterprise you will be using the dApp as a hostpital sees it.
+By accessing http://localhost:3000/enterprise you will be using the dApp as a hospital sees it.
 
 The ```Users.txt``` contain exemples of patient, hospitals and contract owner used for tests
 

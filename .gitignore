@@ -6,3 +6,4 @@ backend/.env
 links.txt
 todo.txt
 backup.js
+contracts/bin
